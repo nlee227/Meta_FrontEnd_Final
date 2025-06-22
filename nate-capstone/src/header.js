@@ -1,16 +1,16 @@
 import React from "react";
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row, Col, Image, Navbar } from 'react-bootstrap';
 import Nav from './nav.js';
 
 function Header() {
     return (
       <>
-          <header className="py-3" style={{ backgroundColor: '#112240' }}>
+          <header className="py-3" style={{ backgroundColor: '#EDEFEE' }}>
             <Container>
               <Row className="align-items-center justify-content-center">
                 <Col lg={12} className="p-0">
                   <Row className='align-items-center justify-content-center g-0'>
-                    <Col col="auto" md="auto" lg={2} className="d-flex justify-content-center">
+                    <Col id="logo" col="auto" md="auto" lg={2} className="d-flex justify-content-center">
                     <Image
                       src="/icons_assets/Logo.svg"
                       alt="company logo"
@@ -19,8 +19,13 @@ function Header() {
                     />
                     </Col>
                     <Col lg={2} className="d-none d-lg-block"></Col>
-                    <Col col="auto" md="auto" lg={7} className="d-flex justify-content-center">
-                      <Nav />
+                    <Col id="navbar" col="auto" md="auto" lg={7} className="d-flex justify-content-center">
+                      <Navbar expand="md" className="p-o">
+                      <Navbar.Toggle aria-controls="basic-navbar-nav" className="ms-auto"/>
+                      <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center">
+                        <Nav />
+                      </Navbar.Collapse>
+                      </Navbar>
                     </Col>
                   </Row>
                 </Col>

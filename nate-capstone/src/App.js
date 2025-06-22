@@ -6,11 +6,11 @@ import Footer from './footer.js';
 
 function App() {
   return (
-    <>
+    <div className="d-flex flex-column min-vh-100">
         <Header />
-        <Main />
+        <Main className="flex-grow-1"/>
         <Footer />
-    </>
+    </div>
   );
 }
 
