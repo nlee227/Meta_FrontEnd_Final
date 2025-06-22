@@ -40,3 +40,45 @@ code {
     margin: 0 2rem;
   }
 }
+
+.footer-nav.footer-nav .nav-item {
+  padding: 0 !important;
+  margin: 0;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .footer-nav .nav {
+    display: flex !important;
+    flex-direction: column;
+  }
+}
+
+/* 1200px+: Two columns */
+@media (min-width: 1200px) {
+  .footer-nav .nav {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+  }
+}
+
+/* Medium screens - image on top, nav and contact in 2 columns below */
+@media (min-width: 768px) and (max-width: 991px) {
+  .footer-image-col {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+  .footer-nav, .footer-contact {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-nav, .footer-contact {
+    margin-top: 1rem;
+  }
+  .footer-nav, .footer-contact {
+    text-align: center;
+  }
+}
