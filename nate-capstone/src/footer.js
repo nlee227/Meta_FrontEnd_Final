@@ -18,7 +18,7 @@ function Footer() {
             </Col>
 
             <Col lg={3} md={6} xs={12} className="footer-nav">
-              <BootstrapNav className="nav d-flex flex-column gap-0">
+              <BootstrapNav className="nav d-flex flex-column gap-1">
                 <NavLink href="#home" className="nav-item">Home</NavLink>
                 <NavLink href="#about" className="nav-item">About</NavLink>
                 <NavLink href="#menu" className="nav-item">Menu</NavLink>
@@ -37,8 +37,8 @@ function Footer() {
                   <div>142-234-6643</div>
                 </Col>
               </Row>
-              <Row className="footer-social mt-3">
-                <Col xs={12} className="text-center text-lg-start">
+              <Row className="d-flex footer-social mt-3">
+                <Col xs={12} className="justify-content-center">
                   <a href="https://facebook.com" className="me-3 d-inline-block">
                     <img
                       src="/social/facebook-f-brands.svg"

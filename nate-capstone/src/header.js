@@ -19,10 +19,10 @@ function Header() {
                     />
                     </Col>
                     <Col lg={2} className="d-none d-lg-block"></Col>
-                    <Col id="navbar" col="auto" md="auto" lg={7} className="d-flex justify-content-center">
-                      <Navbar expand="md" className="p-o">
-                      <Navbar.Toggle aria-controls="basic-navbar-nav" className="ms-auto"/>
-                      <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center">
+                    <Col id="navbar" col="auto" md="auto" lg={8} className="d-flex justify-content-center">
+                      <Navbar expand="md" className="p-0">
+                      <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                      <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center p-0">
                         <Nav />
                       </Navbar.Collapse>
                       </Navbar>

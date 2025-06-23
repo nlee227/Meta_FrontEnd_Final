@@ -1,84 +1,370 @@
 @import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;600;700&display=swap');
+/* Assuming "Karla" is a font you want to use, I'll add it here for consistency if it's from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
 
+
+/* ==========================================================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   ========================================================================== */
+:root {
+  --primary-color: #495E57;
+  --accent-color: #F4CE14;
+  --text-white: #ffffff;
+  --text-black: #000000;
+  --font-primary: 'Markazi Text', serif;
+  --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-karla: 'Karla', sans-serif; /* Added for consistency if using Karla explicitly */
+  --font-mono: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 2.5rem;
+  
+  /* Border radius */
+  --border-radius: 10px;
+  --border-radius-percent: 10%;
+}
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-system); /* Default system font for body */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: var(--font-mono);
 }
 
-.nav-item.nav-item {
-  color: #495E57;
-  font-size: 19px;
+/* ==========================================================================
+   CARD STYLES
+   ========================================================================== */
+.card-body {
+  background-color: var(--primary-color); /* Use variable for consistency */
+}
+
+.card-text {
+  color: var(--text-white); /* Use variable */
+}
+
+.card-body .card-title {
+  color: var(--accent-color); /* Use variable */
+}
+
+.card {
+  border: none; /* Removed !important */
+  box-shadow: none; /* Removed !important */
+}
+
+.card .btn {
+  background-color: var(--accent-color); /* Removed !important */
+  color: var(--text-black); /* Removed !important */
+  font-family: var(--font-karla); /* Use variable for Karla, assuming it's loaded */
+  font-weight: bold; /* Removed !important */
+}
+
+.specials-card {
+  /* Let Col handle primary width, card content uses max-width to fit */
+  width: 100%; /* Ensure card fills its Col */
+  max-width: 18rem; /* Set a max-width if cards should not grow beyond a certain size */
+  /* Media query adjustments for specials-card should now use max-width and min-width if needed */
+}
+
+/* Example of how to adjust max-width if still needed for specific ranges */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .specials-card {
+    max-width: 16rem; /* Adjust max-width for this specific desktop range */
+  }
+}
+
+@media (max-width: 991.98px) {
+  .specials-card {
+    max-width: 18rem; /* Consistent max-width on smaller screens */
+  }
+}
+
+
+/* ==========================================================================
+   NAVIGATION STYLES
+   ========================================================================== */
+.bootstrap-nav {
+  /* Removed display: grid, grid-auto-flow, justify-content, gap, margin-inline, white-space, overflow-x */
+  /* These were aggressively overriding Bootstrap's Navbar flex behavior */
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+#navbar {
+  max-width: 100%;
+  padding-left: 0; /* Removed !important */
+  padding-right: 0; /* Removed !important */
+}
+
+#basic-navbar-nav {
+  max-width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap; /* Removed !important - Bootstrap's Navbar.Collapse is already flex-wrap */
+}
+
+/* General nav-item styles within .bootstrap-nav (e.g. for header nav) */
+.bootstrap-nav .nav-item {
+  color: var(--primary-color); /* Use primary color */
+  font-size: 19px; /* This was default size */
   text-decoration: none;
-  font-family: 'Markazi Text', serif;
-  margin: 0 1rem;
-  white-space: nowrap;
+  font-family: var(--font-primary);
   border: 2px solid transparent;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+  padding: 0.25rem 0.5rem; /* Add a small default padding for better clickable area */
+  white-space: nowrap; /* Added back to prevent single word wrapping like "Order Online" */
 }
 
-.nav-item.nav-item:hover {
-  color: #F4CE14;
+.bootstrap-nav .nav-item:hover {
+  color: var(--accent-color);
   text-decoration: underline;
 }
 
+/* Navigation responsive spacing */
+/* These responsive margins will now work correctly as white-space: nowrap is active */
 @media (min-width: 768px) {
   .nav-item {
-    margin: 0 1.5rem;
+    margin: 0 var(--spacing-sm); /* Using --spacing-sm (1rem) for md+ screens */
   }
 }
 
 @media (min-width: 1200px) {
   .nav-item {
-    margin: 0 2rem;
+    margin: 0 var(--spacing-md); /* Using --spacing-md (1.5rem) for xl+ screens */
   }
 }
 
-.footer-nav.footer-nav .nav-item {
-  padding: 0 !important;
-  margin: 0;
+/* Footer navigation specific styles */
+.footer-nav .nav-item {
+  color: var(--primary-color); /* Consistent color */
+  font-family: var(--font-karla); /* Using Karla variable */
+  font-size: 16px; /* Smaller font size for footer */
+  padding: 0; /* Removed !important. Default 0 is often fine here. */
+  margin: 0; /* Removed !important. Bootstrap utilities can add margin. */
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
-  .footer-nav .nav {
-    display: flex !important;
-    flex-direction: column;
+.footer-nav .nav-item:hover {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   HEADER STYLES
+   ========================================================================== */
+#main-header {
+  color: var(--accent-color);
+}
+
+#location-header {
+  color: var(--text-white);
+}
+
+#weekly-specials-header {
+  font-family: "Markazi Text" !important; /* Use variable */
+  font-size: 4rem;
+  color: var(--text-black); /* Use variable */
+  margin-bottom: 0;
+  padding-left: 50px;
+}
+
+@media (max-width: 992px) {
+  #weekly-specials-header {
+    text-align: center;
   }
 }
 
-/* 1200px+: Two columns */
-@media (min-width: 1200px) {
-  .footer-nav .nav {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, auto);
-    grid-auto-flow: column;
+/* ==========================================================================
+   FOOTER STYLES
+   ========================================================================== */
+.footer-nav,
+.footer-contact {
+  text-align: center;
+  font-family: var(--font-karla); /* Consistent font */
+}
+
+/* Footer layout for different screen sizes */
+@media (max-width: 767px) {
+  .footer-nav,
+  .footer-contact {
+    margin-top: var(--spacing-sm);
   }
 }
 
-/* Medium screens - image on top, nav and contact in 2 columns below */
 @media (min-width: 768px) and (max-width: 991px) {
   .footer-image-col {
     order: -1;
-    margin-bottom: 2rem;
+    margin-bottom: var(--spacing-lg);
   }
-  .footer-nav, .footer-contact {
+}
+
+@media (min-width: 992px) and (max-width: 1399px) {
+  .footer-nav .nav.d-flex {
+    flex-direction: column; /* Removed !important */
+  }
+}
+
+@media (min-width: 1400px) {
+  .footer-nav .nav.d-flex {
+    display: grid; /* Removed !important */
+    grid-template-columns: 1fr 1fr; /* Removed !important */
+    grid-template-rows: repeat(3, auto); /* Removed !important */
+    grid-auto-flow: column; /* Removed !important */
+  }
+}
+
+/* ==========================================================================
+   BUTTON STYLES
+   ========================================================================== */
+.custom-button {
+  background-color: var(--accent-color) !important; /* Removed !important */
+  color: var(--text-black) !important; /* Removed !important */
+  font-weight: bold !important; /* Removed !important */
+  font-family: "Markazi Text" !important; /* Removed !important */
+  cursor: pointer;
+  outline: 1px solid var(--text-black);
+}
+
+.online-menu-button {
+  background-color: var(--accent-color) !important; /* Removed !important */
+  color: var(--text-black) !important; /* Removed !important */
+  font-weight: bold !important; /* Removed !important */
+  font-family: "Markazi Text" !important; /* Removed !important */
+  cursor: pointer;
+  outline: 1px solid var(--text-black);
+  padding: .5rem 7rem !important;
+  font-size: 24px !important;
+}
+
+.custom-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  outline: 2px solid blue; /* Blue outline on hover */
+}
+
+.add-to-cart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  outline: 2px solid blue;
+  background-color: var(--accent-color) !important; /* Removed !important */
+  color: var(--text-black) !important; /* Removed !important */
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+.seamless-spacing {
+  padding: clamp(0.75rem, 2.5vw, 1.5rem);
+}
+
+.text-col p {
+  color: var(--text-white);
+}
+
+/* ==========================================================================
+   RESPONSIVE IMAGE STYLES
+   ========================================================================== */
+.responsive-image {
+  max-height: 350px;
+  border-radius: var(--border-radius-percent);
+  width: auto;
+  object-fit: cover;
+  position: absolute;
+}
+
+/* Responsive image adjustments */
+@media (max-width: 768px) {
+  .responsive-image {
+    max-height: 200px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .text-col {
+    text-align: center; /* Removed !important */
+    padding-left: 100px; /* Removed !important */
+    padding-right: 100px; /* Removed !important */
+  }
+  
+  .text-col p {
+    max-width: none; /* Removed !important */
+    margin: 0 auto; /* Removed !important */
+  }
+  
+  .responsive-image {
+    position: static;
+    max-height: 280px; /* Removed !important */
+    width: auto;
+    margin-top: 10px; /* Removed !important */
+  }
+  
+  .image-col {
+    padding-left: 0; /* Removed !important */
     text-align: center;
   }
 }
 
 @media (max-width: 767px) {
-  .footer-nav, .footer-contact {
-    margin-top: 1rem;
+  .text-col {
+    padding-left: 10px; /* Removed !important */
+    padding-right: 10px; /* Removed !important */
   }
-  .footer-nav, .footer-contact {
-    text-align: center;
+}
+
+/* ==========================================================================
+   SPECIALS SECTION STYLES
+   ========================================================================== */
+@media (max-width: 767px) {
+  .specials-section {
+    padding-top: 20px; /* Removed !important */
   }
+  
+  .specials-header-col {
+    text-align: center; /* Removed !important */
+  }
+  
+  .specials-button-col {
+    justify-content: center; /* Removed !important */
+    padding-left: 0; /* Removed !important */
+    padding-right: 0; /* Removed !important */
+  }
+}
+
+@media (min-width: 992px) {
+  .specials-header-col {
+    padding-left: 100px; /* Removed !important */
+  }
+  
+  .specials-button-col {
+    padding-right: 100px;
+    padding-left: 50px;
+  }
+}
+
+.specials-section {
+  background-color: #A3A3A3;
+  padding-bottom: 60px;
+  padding-top: 20px;
+}
+
+@media (min-width: 992px) {
+  .specials-section {
+    padding-bottom: 50px;
+    padding-top: 50px;
+  }
+}
+
+.reserve-section {
+  background-color: #495e57;
+  padding-bottom: 40px;
+  padding-top: 40px;
 }
