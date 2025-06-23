@@ -1,5 +1,6 @@
 import React from "react";
 import { Nav as BootstrapNav, Container, NavLink, Row, Col, Image } from 'react-bootstrap';
+import './index.css';
 
 function Footer() {
     return (

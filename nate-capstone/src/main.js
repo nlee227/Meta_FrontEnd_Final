@@ -1,6 +1,7 @@
 import React from "react";
 import Specials from "./specials";
 import Reserve from "./reserve";
+import './index.css';
 import { Button, Container, Row, Col } from "react-bootstrap";
 
 function Main() {

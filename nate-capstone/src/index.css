@@ -234,8 +234,8 @@ code {
   outline: 1px solid var(--text-black);
 }
 
-.online-menu-button {
-  background-color: var(--accent-color) !important; /* Removed !important */
+button.online-menu-button.btn-lg {
+  background-color: #FBDABB; /* Removed !important */
   color: var(--text-black) !important; /* Removed !important */
   font-weight: bold !important; /* Removed !important */
   font-family: "Markazi Text" !important; /* Removed !important */
@@ -243,10 +243,16 @@ code {
   outline: 1px solid var(--text-black);
   padding: .5rem 7rem !important;
   font-size: 24px !important;
+  border-radius: 30px;
 }
 
 .custom-button:hover {
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  outline: 2px solid blue; /* Blue outline on hover */
+}
+
+button.online-menu-button.btn-lg:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   outline: 2px solid blue; /* Blue outline on hover */
 }

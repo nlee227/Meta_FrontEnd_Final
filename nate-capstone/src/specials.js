@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Row, Col } from "react-bootstrap"; // Removed 'Carousel' import
+import { Button, Container, Row, Col } from "react-bootstrap"; 
 
 function Specials() {
     return(
