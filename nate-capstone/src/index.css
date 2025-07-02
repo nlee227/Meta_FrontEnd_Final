@@ -91,6 +91,118 @@ code {
 }
 
 
+/* Enhanced card border removal - add this to your existing CSS */
+
+/* Remove borders from all card elements */
+.card,
+.card *,
+.card::before,
+.card::after {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Specifically target common card sub-elements */
+.card-img,
+.card-img-top,
+.card-img-bottom,
+.card-header,
+.card-body,
+.card-footer {
+  border: none !important;
+}
+
+/* Alternative approach - more specific selectors */
+.specials-card,
+.specials-card *,
+.specials-card .card,
+.specials-card .card-img,
+.specials-card .card-img-top,
+.specials-card .card-body {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* If you're using Bootstrap 5, also remove the default border-color */
+.card {
+  border-color: transparent !important;
+  border-width: 0 !important;
+}
+/* ==========================================================================
+   TESTIMONIALS LAYOUT
+   ========================================================================== */
+.testimonials-section{
+  background-color: #7c918a;
+  padding-bottom: 20px;
+}
+
+#testimonials-header {
+  font-family: "Markazi Text";
+  font-size: 4rem;
+
+}
+
+.testimonials-container {
+  display: flex;           /* Makes children line up horizontally */
+  gap: 20px;              /* Space between boxes */
+  max-width: 1200px;      /* Prevents container from getting too wide */
+  margin: 0 auto;         /* Centers the container on page */       /* Allows wrapping on smaller screens */
+}
+
+.testimonials-box {
+  flex: 1;                /* Each box takes equal width */
+  min-width: 280px;       /* Prevents boxes from getting too narrow */
+  background: white;
+  font-family: "karla";
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.customer-name {
+  font-size: 1.25rem;
+  font-family: "karla";
+  font-weight: 600;
+  color: #495e57;
+  margin-bottom: 16px;
+  text-align: center;
+  border-bottom: 2px solid #f8f9fa;
+  background: radial-gradient(
+    circle at center,
+    #f4ce14 0%,
+    rgba(244, 206, 20, 1) 30%,
+    rgba(244, 206, 20, 0) 100%
+  );
+  padding: 12px 20px;
+  border-radius: 50%;
+}
+
+.rating-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+.rating-label {
+  font-weight: 500;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.rating-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e74c3c;
+}
+
+.stars {
+  margin-left: 8px;
+  color: #ffc107;
+}
 /* ==========================================================================
    NAVIGATION STYLES
    ========================================================================== */
