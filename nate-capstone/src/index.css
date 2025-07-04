@@ -129,25 +129,30 @@ code {
   border-color: transparent !important;
   border-width: 0 !important;
 }
+
 /* ==========================================================================
    TESTIMONIALS LAYOUT
    ========================================================================== */
 .testimonials-section{
   background-color: #7c918a;
-  padding-bottom: 20px;
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
 }
 
 #testimonials-header {
   font-family: "Markazi Text";
   font-size: 4rem;
+  color: #333333;
 
 }
 
 .testimonials-container {
-  display: flex;           /* Makes children line up horizontally */
-  gap: 20px;              /* Space between boxes */
-  max-width: 1200px;      /* Prevents container from getting too wide */
-  margin: 0 auto;         /* Centers the container on page */       /* Allows wrapping on smaller screens */
+  display: flex;    
+  flex-wrap: wrap;       /* Makes children line up horizontally */
+  gap: 25px;              /* Space between boxes */
+  max-width: 1200px;    /* Prevents container from getting too wide */
+  margin: 0 auto; 
+  padding-top: 50px;        /* Centers the container on page */       /* Allows wrapping on smaller screens */
 }
 
 .testimonials-box {
@@ -157,9 +162,24 @@ code {
   font-family: "karla";
   border-radius: 12px;
   padding: 24px;
+  height: 225px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid #e9ecef;
+}
+
+.testimonials-card.card{
+  min-height: 225px;
+  border-radius: 40% !important;
+}
+
+.testimonials-card-body {
+  background-color: white !important;
+}
+
+.quote {
+  font-family: var(--font-karla);
+  font-size: 1rem;
+  color: #333;
 }
 
 .customer-name {
@@ -170,13 +190,7 @@ code {
   margin-bottom: 16px;
   text-align: center;
   border-bottom: 2px solid #f8f9fa;
-  background: radial-gradient(
-    circle at center,
-    #f4ce14 0%,
-    rgba(244, 206, 20, 1) 30%,
-    rgba(244, 206, 20, 0) 100%
-  );
-  padding: 12px 20px;
+  background:#f4ce14;
   border-radius: 50%;
 }
 
@@ -203,6 +217,7 @@ code {
   margin-left: 8px;
   color: #ffc107;
 }
+
 /* ==========================================================================
    NAVIGATION STYLES
    ========================================================================== */
@@ -275,6 +290,8 @@ code {
    ========================================================================== */
 #main-header {
   color: var(--accent-color);
+  font-family: "Markazi Text";
+  font-size: 60px !important;
 }
 
 #location-header {
@@ -293,6 +310,12 @@ code {
   #weekly-specials-header {
     text-align: center;
   }
+}
+
+.about_little_lemon_header {
+  color: #F4CE14 !important;
+  font-family: "Markazi Text" !important;
+  font-size: 60px !important;
 }
 
 /* ==========================================================================
@@ -419,15 +442,135 @@ button.online-menu-button.btn-lg:hover {
   }
   
   .responsive-image {
-    position: static;
-    max-height: 280px; /* Removed !important */
+    position: relative;
+    max-height: 280px;
     width: auto;
-    margin-top: 10px; /* Removed !important */
+    margin-top: 10px;
   }
   
   .image-col {
     padding-left: 0; /* Removed !important */
     text-align: center;
+  }
+}
+
+.image-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  height: 100%;
+}
+
+.base_image {
+  max-height: 280px;
+  max-width: 100%;   
+  width: 100%;
+  height: auto;
+  object-fit: cover;  
+  display: block;
+}
+
+.top_image {
+  max-height: 200px;   
+  max-width: 100%;      
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* BELOW MEDIUM (xs, sm) - STACKED VERTICALLY */
+@media (max-width: 767.98px) {
+  /* Hide the entire image column */
+  .little_lemon_description .col:last-child {
+    display: none;
+  }
+  
+  .image-container {
+    display: none;
+  }
+  
+  .base_image,
+  .top_image {
+    display: none;
+  }
+
+  .little_lemon_description {
+    justify-content: center; 
+  }
+
+  .little_lemon_description_info {
+    text-align: center; 
+    flex: 1 1 100%; 
+    max-width: 100%; 
+    width: 100%;
+  }
+
+  .about_little_lemon_header,
+  .about_little_lemon_location,
+  .about_little_lemon_description {
+    text-align: center;
+  }
+}
+
+/* MEDIUM SCREENS (md) - OVERLAPPING */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Add this */
+    gap: 15px;
+    max-width: 100%;
+    height: 100%; /* Add this */
+  }
+  
+  .base_image {
+    position: relative;
+    max-height: 200px;
+    width: auto;
+    display: block;
+    object-fit: cover;
+  }
+  
+  .top_image {
+    position: relative;
+    max-height: 200px;
+    width: auto;
+    display: block;
+    object-fit: cover;
+    border: 3px solid white;
+    border-radius: 8px;
+  }
+}
+
+/* LARGE SCREENS AND UP (lg, xl, xxl) - SIDE BY SIDE */
+@media (min-width: 992px) {
+  .image-container {
+    display: flex;
+    gap: 15px;
+    align-items: center; /* This centers vertically */
+    justify-content: center; /* This centers horizontally */
+    max-width: 100%;
+    height: 100%; /* Add this */
+  }
+  
+  .base_image {
+    position: relative;
+    max-height: 300px;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .top_image {
+    position: relative;
+    max-height: 280px;
+    flex: 1;
+    min-width: 0;
   }
 }
 

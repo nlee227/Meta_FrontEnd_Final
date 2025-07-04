@@ -3,6 +3,7 @@ import Specials from "./specials";
 import Reserve from "./reserve";
 import './index.css';
 import Testimonials from "./testimonials";
+import Little_Lemon from "./little_lemon";
 
 function Main() {
     return (
@@ -16,8 +17,8 @@ function Main() {
       <div className="testimonials-section">
       <Testimonials />
       </div>
-      <div>
-        <h1 id="about-us-main-header">Little Lemon</h1>
+      <div className="little-lemon-section">
+      <Little_Lemon />
       </div>
       </>
     );
