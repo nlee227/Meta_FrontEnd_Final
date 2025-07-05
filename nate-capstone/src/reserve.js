@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import './index.css';
 
-function Reserve() {
+function Reserve({ setCurrentScreen }) {
     return(
         <>
         <Container>
@@ -11,7 +11,7 @@ function Reserve() {
                     <h1 id="main-header">Little Lemon</h1>
                     <h2 id="location-header">Chicago</h2>
                     <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
-                    <Button className="align-self-center custom-button btn-lg responsive-button">Reserve a Table</Button>
+                    <Button onClick={()=>setCurrentScreen('booking-form')} className="align-self-center custom-button btn-lg responsive-button">Reserve a Table</Button>
                 </Col>
                 <Col lg={2} className="d-none d-lg-block"></Col> 
                 <Col lg={4} sm={12} className="image-col d-flex justify-content-center d-none d-md-block">

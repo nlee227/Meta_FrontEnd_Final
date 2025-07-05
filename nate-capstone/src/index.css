@@ -43,6 +43,21 @@ code {
   font-family: var(--font-mono);
 }
 
+.little-lemon-section {
+  max-height: 350px; 
+  overflow: hidden;
+}
+
+.little-lemon-section .base_image,
+.little-lemon-section .top_image {
+  max-height: 200px; 
+}
+
+.form-label {
+  font-family: var(--font-karla) !important;
+  font-size: 1.5rem !important;
+}
+
 /* ==========================================================================
    CARD STYLES
    ========================================================================== */
@@ -288,10 +303,36 @@ code {
 /* ==========================================================================
    HEADER STYLES
    ========================================================================== */
+.guest-input {
+  max-width:100px;
+}
+
+.location-input {
+  max-width:100px;
+}
+
+.main-header {
+  color: var(--accent-color);
+  font-family: "Markazi Text";
+  font-size: 1.5rem !important;
+}
+
+.page-header {
+  color: var(--accent-color);
+  font-family: "Markazi Text";
+  font-size: 4rem !important;
+}
+
+.section-header {
+  color: var(--accent-color);
+  font-family: "Markazi Text" !important;
+  font-size: 3rem !important;
+}
+
 #main-header {
   color: var(--accent-color);
   font-family: "Markazi Text";
-  font-size: 60px !important;
+  font-size: 2rem !important;
 }
 
 #location-header {

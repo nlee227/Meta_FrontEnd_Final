@@ -2,9 +2,9 @@ import React from "react";
 import { Nav as BootstrapNav, Container, NavLink, Row, Col, Image } from 'react-bootstrap';
 import './index.css';
 
-function Footer() {
+function Footer({ setCurrentScreen, currentScreen }) {
     return (
-      <footer className="mt-auto py-3" style={{backgroundColor: "#edefee"}}>
+      <footer className="py-3" style={{backgroundColor: "#edefee"}}>
         <Container>
           <Row className="align-items-center justify-content-center">
             <Col lg={1}></Col>
@@ -20,12 +20,36 @@ function Footer() {
 
             <Col lg={3} md={6} xs={12} className="footer-nav">
               <BootstrapNav className="nav d-flex flex-column gap-1">
-                <NavLink href="#home" className="nav-item">Home</NavLink>
-                <NavLink href="#about" className="nav-item">About</NavLink>
-                <NavLink href="#menu" className="nav-item">Menu</NavLink>
-                <NavLink href="#reservations" className="nav-item">Reservations</NavLink>
-                <NavLink href="#order" className="nav-item">Order Online</NavLink>
-                <NavLink href="#login" className="nav-item">Login</NavLink>
+                <NavLink onClick={()=>setCurrentScreen('home')} 
+                className={`nav-item ${currentScreen === 'home' ? 'active' : ''}`}
+                style={{ fontWeight: currentScreen === 'home' ? 'bold' : 'normal' }}>
+                  Home
+                </NavLink>
+                <NavLink onClick={()=>setCurrentScreen('about')} 
+                className={`nav-item ${currentScreen === 'about' ? 'active' : ''}`}
+                style={{ fontWeight: currentScreen === 'about' ? 'bold' : 'normal' }}>
+                  About
+                </NavLink>
+                <NavLink  onClick={()=>setCurrentScreen('menu')} 
+                className={`nav-item ${currentScreen === 'menu' ? 'active' : ''}`}
+                style={{ fontWeight: currentScreen === 'menu' ? 'bold' : 'normal' }}>
+                  Menu
+                </NavLink>
+                <NavLink onClick={()=>setCurrentScreen('booking-form')} 
+                className={`nav-item ${currentScreen === 'booking-form' ? 'active' : ''}`}
+                style={{ fontWeight: currentScreen === 'booking-form' ? 'bold' : 'normal' }}>
+                  Reservations
+                </NavLink>
+                <NavLink onClick={()=>setCurrentScreen('order')} 
+                className={`nav-item ${currentScreen === 'order' ? 'active' : ''}`}
+                style={{ fontWeight: currentScreen === 'order' ? 'bold' : 'normal' }}>
+                  Order Online
+                </NavLink>
+                <NavLink onClick={()=>setCurrentScreen('login')} 
+                className={`nav-item ${currentScreen === 'login' ? 'active' : ''}`}
+                style={{ fontWeight: currentScreen === 'login' ? 'bold' : 'normal' }}>
+                  Login
+                </NavLink>
               </BootstrapNav>
             </Col>
 

@@ -3,7 +3,7 @@ import { Container, Row, Col, Image, Navbar } from 'react-bootstrap';
 import Nav from './nav.js';
 import './index.css';
 
-function Header() {
+function Header({ setCurrentScreen, currentScreen }) {
     return (
       <>
           <header className="py-3" style={{ backgroundColor: '#EDEFEE' }}>
@@ -24,7 +24,7 @@ function Header() {
                       <Navbar expand="md" className="p-0">
                       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center p-0">
-                        <Nav />
+                        <Nav setCurrentScreen={setCurrentScreen} currentScreen={currentScreen}/>
                       </Navbar.Collapse>
                       </Navbar>
                     </Col>
