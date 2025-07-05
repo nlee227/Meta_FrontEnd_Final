@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="d-flex flex-column min-vh-100">
         <Header setCurrentScreen={setCurrentScreen} currentScreen={currentScreen} />
-        <Main currentScreen={currentScreen} setCurrentScreen={setCurrentScreen}/>
+        <Main setCurrentScreen={setCurrentScreen} currentScreen={currentScreen}/>
         <Footer setCurrentScreen={setCurrentScreen} currentScreen={currentScreen}/>
     </div>
   );
