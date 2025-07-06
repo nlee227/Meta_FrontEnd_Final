@@ -6,7 +6,7 @@ import Details from "./details";
 import PersonalDetailsForm from "./personaldetailsform";
 import Submit from "./submit";
 
-function BookingForm({ setCurrentScreen }) {
+function BookingForm({ setCurrentScreen, availableTimes, dispatch }) {
     const [restaurantLocation, setRestaurantLocation] = useState('');
     const [numberOfGuests, setNumberOfGuests] = useState('2');
     const [location, setLocation] = useState('');
@@ -78,58 +78,58 @@ function BookingForm({ setCurrentScreen }) {
 
     const validateAllFields = () => {
         const newErrors = {};
-        
+
         if (!restaurantLocation) {
             newErrors.restaurantLocation = "Please select a restaurant location";
         }
-        
+
         if (!numberOfGuests || numberOfGuests < 1) {
             newErrors.numberOfGuests = "Number of guests is required";
         }
-        
+
         if (diningArea === 'inside' && !location) {
             newErrors.location = "Please select a dining location";
         }
-        
+
         if (!selectedDate) {
             newErrors.selectedDate = "Please select a date";
         }
-        
+
         if (!time) {
             newErrors.time = "Please select a time";
         }
-        
+
         if (!formData.firstName.trim()) {
             newErrors.firstName = "First name is required";
         } else {
             const nameError = validateName(formData.firstName, 'First name');
             if (nameError) newErrors.firstName = nameError;
         }
-        
+
         if (!formData.lastName.trim()) {
             newErrors.lastName = "Last name is required";
         } else {
             const nameError = validateName(formData.lastName, 'Last name');
             if (nameError) newErrors.lastName = nameError;
         }
-        
+
         if (!formData.phone.trim()) {
             newErrors.phone = "Phone number is required";
         } else {
             const phoneError = validatePhone(formData.phone);
             if (phoneError) newErrors.phone = phoneError;
         }
-        
+
         if (!formData.email.trim()) {
             newErrors.email = "Email is required";
         } else {
             const emailError = validateEmail(formData.email);
             if (emailError) newErrors.email = emailError;
         }
-        
+
         const specialError = validateSpecialRequests(formData.specialRequests);
         if (specialError) newErrors.specialRequests = specialError;
-        
+
         setErrors(newErrors);
         setTouched({
             restaurantLocation: true,
@@ -143,13 +143,13 @@ function BookingForm({ setCurrentScreen }) {
             email: true,
             specialRequests: true
         });
-        
+
         return Object.keys(newErrors).length === 0;
     };
 
     const handleSubmit = () => {
         const isValid = validateAllFields();
-        
+
         if (isValid) {
             setCurrentScreen('confirmation');
         } else {
@@ -181,6 +181,8 @@ function BookingForm({ setCurrentScreen }) {
                         setTime={setTime}
                         errors={errors}
                         touched={touched}
+                        availableTimes={availableTimes}
+                        dispatch={dispatch} 
                     />
                     <PersonalDetailsForm 
                         formData={formData}

@@ -14,11 +14,19 @@ function Details({
     time,
     setTime,
     errors,
-    touched
+    touched,
+    availableTimes,
+    dispatch
 }) {
 
     useEffect(() => {
-        setTime(''); 
+        setTime('');
+        if (selectedDate) {
+            dispatch({
+                type: 'UPDATE_TIMES',
+                date: selectedDate
+            });
+        }
     }, [selectedDate, setTime]);
 
     const handleGuestChange = (e) => {
@@ -144,14 +152,15 @@ function Details({
                                 onChange={(e) => setTime(e.target.value)}
                             >
                                 <option value="">Select time...</option>
-                                <option value="17:00">5:00 PM</option>
-                                <option value="17:30">5:30 PM</option>
-                                <option value="18:00">6:00 PM</option>
-                                <option value="18:30">6:30 PM</option>
-                                <option value="19:00">7:00 PM</option>
-                                <option value="19:30">7:30 PM</option>
-                                <option value="20:00">8:00 PM</option>
-                                <option value="20:30">8:30 PM</option>
+                                {availableTimes.map(timeSlot => (
+                                    <option key={timeSlot} value={timeSlot}>
+                                        {new Date(`2000-01-01T${timeSlot}`).toLocaleTimeString([], {
+                                            hour: 'numeric',
+                                            minute: '2-digit',
+                                            hour12: true
+                                        })}
+                                    </option>
+                                ))}
                             </Form.Select>
                             {touched.time && errors.time && (
                                 <Form.Control.Feedback type="invalid">
