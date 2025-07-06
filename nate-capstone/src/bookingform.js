@@ -173,6 +173,17 @@ function BookingForm({ setCurrentScreen, availableTimes, dispatch, submitForm })
         }
     };
 
+    const isFormValid = (
+        restaurantLocation &&
+        numberOfGuests >= 1 &&
+        (diningArea !== 'inside' || location) &&
+        selectedDate &&
+        time &&
+        formData.firstName.trim() &&
+        formData.lastName.trim() &&
+        formData.email.trim() &&
+        formData.phone.trim()
+    );
     return(
         <Container>
             <Row>
@@ -212,7 +223,7 @@ function BookingForm({ setCurrentScreen, availableTimes, dispatch, submitForm })
                         validateEmail={validateEmail}
                         validateSpecialRequests={validateSpecialRequests}
                     />
-                    <Submit onSubmit={handleSubmit} />
+                    <Submit onSubmit={handleSubmit} disabled={!isFormValid} />
                 </Col>
             </Row>
         </Container>

@@ -49,13 +49,15 @@ function Details({
             <h2 className="section-header text-center mb-4">Reservation Details</h2>
             <Form>
                 <Form.Group as={Row} className="mb-3 align-items-center">
-                    <Form.Label className="form-label" column sm={{span: 3, offset: 1}}>Number of guests</Form.Label>
+                    <Form.Label className="form-label" htmlFor="numberOfGuests" column sm={{span: 3, offset: 1}}>Number of guests</Form.Label>
                     <Col sm={8}>
                         <Form.Control
                             type="number"
+                            id="numberOfGuests"
                             min="1"
                             max="10"
                             value={numberOfGuests}
+                            aria-label="Number of guests"
                             onChange={handleGuestChange}
                             className={`guest-input ${touched.numberOfGuests && errors.numberOfGuests ? 'is-invalid' : ''}`}
                         />
@@ -102,10 +104,12 @@ function Details({
 
                 {diningArea === 'inside' && (
                     <Form.Group as={Row} className="mb-3 align-items-center">
-                        <Form.Label className="form-label" column sm={{span: 3, offset: 1}}>Location</Form.Label>
+                        <Form.Label className="form-label" htmlFor="restaurantRoom" column sm={{span: 3, offset: 1}}>Location</Form.Label>
                         <Col sm={8}>
                             <Form.Select
                                 value={location}
+                                id="restaurantRoom"
+                                aria-label="Choose a location within the restaurant"
                                 onChange={(e) => setLocation(e.target.value)}
                                 className={`w-auto ${touched.location && errors.location ? 'is-invalid' : ''}`}
                             >
@@ -125,11 +129,13 @@ function Details({
                 )}
 
                 <Form.Group as={Row} className="mb-3 align-items-center">
-                    <Form.Label className="form-label" column sm={{span: 3, offset: 1}}>Date</Form.Label>
+                    <Form.Label className="form-label" htmlFor="reservationDate" column sm={{span: 3, offset: 1}}>Date</Form.Label>
                     <Col sm={8}>
                         <Form.Control
                             type="date"
+                            id="reservationDate"
                             value={selectedDate}
+                            aria-label="Choose your reservation date"
                             onChange={(e) => setSelectedDate(e.target.value)}
                             className={`w-auto ${touched.selectedDate && errors.selectedDate ? 'is-invalid' : ''}`}
                             min={new Date().toISOString().split('T')[0]}
@@ -144,11 +150,13 @@ function Details({
 
                 {selectedDate && (
                     <Form.Group as={Row} className="mb-3 align-items-center">
-                        <Form.Label className="form-label" column sm={{span: 3, offset: 1}}>Time</Form.Label>
+                        <Form.Label className="form-label" htmlFor="reservationTime" column sm={{span: 3, offset: 1}}>Time</Form.Label>
                         <Col sm={8}>
                             <Form.Select
                                 className={`w-auto ${touched.time && errors.time ? 'is-invalid' : ''}`}
                                 value={time}
+                                id="reservationTime"
+                                aria-label="Choose your reservation time"
                                 onChange={(e) => setTime(e.target.value)}
                             >
                                 <option value="">Select time...</option>

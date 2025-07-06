@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Row, Col } from "react-bootstrap";
 import './index.css';
 
-function Submit({ onSubmit }) {
+function Submit({ onSubmit, disabled }) {
     return(
         <Row className="mb-4 justify-content-center">
             <Col md={6} className="text-center">
@@ -11,6 +11,7 @@ function Submit({ onSubmit }) {
                     size="lg"
                     className="custom-button px-5 py-3"
                     onClick={onSubmit}
+                    disabled={disabled}
                     style={{
                         fontSize: '1.25rem',
                         fontWeight: 'bold',
