@@ -1,3 +1,5 @@
+/* global fetchAPI submitAPI*/
+
 import React, { useReducer } from "react";
 import Specials from "./specials";
 import Reserve from "./reserve";
@@ -8,41 +10,32 @@ import Little_Lemon from "./little_lemon";
 import Confirmation from "./confirmation";
 
 const initializeTimes = () => {
-    return [
-        "17:00", "17:30", "18:00", "18:30", 
-        "19:00", "19:30", "20:00", "20:30"
-    ];
+    const today = new Date();
+    return fetchAPI(today);
 };
 
 export const updateTimes = (state, action) => {
     switch (action.type) {
         case 'UPDATE_TIMES':
             const { date } = action;
-
             const [year, month, day] = date.split('-');
+            const dateObject = new Date(year, month - 1, day);
 
-            const localDate = new Date(year, month - 1, day);
+            return fetchAPI(dateObject);
 
-            const dayOfWeek = localDate.getDay();
-
-            console.log('Date:', date, 'Day of week:', dayOfWeek);
-
-            if (dayOfWeek === 0 || dayOfWeek === 6) {
-                return [
-                    "11:00", "11:30", "12:00", "12:30",
-                    "17:00", "17:30", "18:00", "18:30",
-                    "19:00", "19:30", "20:00", "20:30", "21:00"
-                ];
-            } else {
-                return [
-                    "17:00", "17:30", "18:00", "18:30",
-                    "19:00", "19:30", "20:00", "20:30"
-                ];
-            }
         default:
             return state;
     }
 }
+
+const submitForm = (formData, navigate) => {
+    const success = submitAPI(formData);
+    if (success) {
+        navigate('confirmation');
+        return true;
+    }
+    return false;
+};
 
 function Main({ setCurrentScreen, currentScreen, className }) {
     const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
@@ -76,6 +69,7 @@ function Main({ setCurrentScreen, currentScreen, className }) {
                         setCurrentScreen={setCurrentScreen}
                         availableTimes={availableTimes}
                         dispatch={dispatch}
+                        submitForm={(formData) => submitForm(formData, setCurrentScreen)}
                         />
                     </div>
                 );

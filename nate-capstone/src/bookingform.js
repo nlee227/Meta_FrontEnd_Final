@@ -6,7 +6,7 @@ import Details from "./details";
 import PersonalDetailsForm from "./personaldetailsform";
 import Submit from "./submit";
 
-function BookingForm({ setCurrentScreen, availableTimes, dispatch }) {
+function BookingForm({ setCurrentScreen, availableTimes, dispatch, submitForm }) {
     const [restaurantLocation, setRestaurantLocation] = useState('');
     const [numberOfGuests, setNumberOfGuests] = useState('2');
     const [location, setLocation] = useState('');
@@ -149,9 +149,25 @@ function BookingForm({ setCurrentScreen, availableTimes, dispatch }) {
 
     const handleSubmit = () => {
         const isValid = validateAllFields();
-
+    
         if (isValid) {
-            setCurrentScreen('confirmation');
+            const bookingData = {
+                date: selectedDate,
+                time: time,
+                guests: numberOfGuests,
+                location: location,
+                diningArea: diningArea,
+                restaurantLocation: restaurantLocation,
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                email: formData.email,
+                phone: formData.phone,
+                specialRequests: formData.specialRequests
+            };
+            const success = submitForm(bookingData);
+            if (!success) {
+                alert('Failed to submit booking. Please try again.');
+            }
         } else {
             alert('Please fix the errors before submitting');
         }
